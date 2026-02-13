@@ -52,6 +52,12 @@ app.get("/notes", async (req, res) => {
   const notes = await Note.find();
   res.json(notes);
 });
+// DELETE all notes
+app.delete("/notes", async (req, res) => {
+  await Note.deleteMany();
+  res.json({ message: "All notes deleted" });
+});
+
 
 // Start server
 app.listen(process.env.PORT, () =>
